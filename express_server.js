@@ -13,6 +13,13 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 
+// Helpers
+function generateRandomString() {
+  return Math.random().toString(36).substr(2, 6);
+}
+
+
+
 app.get("/", (req, res) => {
   res.send("Hello!");
 });
