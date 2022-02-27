@@ -74,3 +74,15 @@ app.post("/urls", (req, res) => {
   urlDatabase[randomString] = req.body.longURL;
   res.redirect(`/urls/${randomString}`);
 });
+
+//* ~~~~~~~~~~ Delete Urls ~~~~~~~~~~ //
+app.post("/urls/:shortURL/delete", (req, res) => {
+  delete urlDatabase[req.params.shortURL]
+  res.redirect("/urls")
+});
+
+//* ~~~~~~~~~~ Update Urls ~~~~~~~~~~ //
+app.post("/urls/:shortURL", (req, res) => {
+  urlDatabase[req.params.shortURL] = req.body.longURL;
+  res.redirect("/urls")
+});
