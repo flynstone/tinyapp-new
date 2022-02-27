@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = 8080; 
 
+// Import body parser
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.set("view engine", "ejs");
 
 const urlDatabase = {
@@ -40,7 +44,7 @@ app.get("/urls/new", (req, res) => {
 app.get("/urls/:shortURL", (req, res) => {
   const templateVars = {
     shortURL: req.params.shortURL,
-    longURL: req.params.longURL
+    longURL: req.body.longURL
   }
   res.render("urls_show", templateVars);
 });
