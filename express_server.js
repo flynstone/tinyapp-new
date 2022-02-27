@@ -25,16 +25,23 @@ app.get("/urls.json", (req, res) => {
 //   res.send("<html><body>Hello <b>World</b></body></html>\n");
 // });
 
+// ~~~~~~~~~~ Get Urls ~~~~~~~~~~ //
 app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase }
   res.render("urls_index", templateVars);
 });
 
+// Make sure this is above ("/urls/:id")
+app.get("/urls/new", (req, res) => {
+  res.render("urls_new");
+});
+
+// ~~~~~~~~~~ Get shortURL ~~~~~~~~~~ //
 app.get("/urls/:shortURL", (req, res) => {
   const templateVars = {
     shortURL: req.params.shortURL,
     longURL: req.params.longURL
   }
   res.render("urls_show", templateVars);
-})
+});
 
