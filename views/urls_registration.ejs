@@ -2,19 +2,31 @@
 <html lang="en">
 
 <head>
-  <%- include('partials/_head') %>
-    <title>URL - TinyApp Example</title>
+  <%- include('partials/_head') %>  
+  <title>URL - TinyApp Example</title>
 </head>
 <body>
   <%- include('partials/_header') %>
 
   
   <main style="margin: 1em;">
-    <h3>Register</h3>
-      <form method='POST' action="/register">
-        <input name="email" type="email" placeholder="email" style= "width: 185px; height: 40px; margin-top: 20px; margin-right: 10px; border-radius: 5px;">
-        <input name="password" type="password" placeholder="password" style= "width: 185px; height: 40px; margin-right: 10px; border-radius: 5px;">
-        <button type="submit" class="btn btn-outline-success" style="margin-left: 15px;">Register</button>
+    <div class="box">
+      <form method='POST' action="/register">  
+        <div class="card">
+            <div class="card-header">
+                <h3>Register</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <input name="email" type="email" placeholder="email">
+                </div>
+                <br/>
+                <div class="container">
+                    <input name="password" type="password" placeholder="password">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Register</button>
+        </div>
       </form>     
   </main>
 
