@@ -128,7 +128,7 @@ app.get("/register", (req, res) => {
     urls: urlDatabase,
     username: req.cookies["username"]
   };
-  
+
   res.render("urls_registration", templateVars)
 });
 
@@ -137,11 +137,21 @@ app.post("/register", (req, res) => {
 
   const userId = generateRandomString()
 
+  if(!req.body.email || !req.body.password){
+    return res.send(400)
+  }
+  for (let user in users){
+    if (users[user].email === req.body.email){
+      return res.send(400)
+    }
+  }
+
   users[userId] = {
     id: userId,
     email: req.body.email,
     password: req.body.password
   }
+  
   res.cookie("user_id", userId);
   res.redirect("/urls");
 })
