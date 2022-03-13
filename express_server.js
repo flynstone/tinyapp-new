@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 8080; 
+const bcrypt = require("bcryptjs");
 
 // Import body parser
 const bodyParser = require("body-parser");
@@ -160,7 +161,7 @@ app.post("/login", (req, res) => {
 
 //* ~~~~~~~~~~ Post Logout ~~~~~~~~~~ //
 app.post("/logout", (req, res) => {
-  req.session = null;
+  res.clearCookie("user_id");
   res.redirect("/login");
  });
 
@@ -183,14 +184,12 @@ app.post("/register", (req, res) => {
     res.send(401);
   }
 
-  const hashedPassword = bcryptjs.hashSync(req.body.password, 10);
-
   users[user_id] = {
     id: user_id,
     email: req.body.email,
-    hashedPassword: hashedPassword
+    password: req.body.password
   };
 
-  req.session.user_id = id;
+  res.cookie("user_id", user_id);
   res.redirect("/urls");
 });

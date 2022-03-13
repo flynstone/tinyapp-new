@@ -15,8 +15,8 @@
     <div class="justify-content-end pr-3">
       <div class="row pt-1">
         <% if (user) { %>
-          <h4 class="mr-3 pt-1" style="color: white;"><%= user %></h4>
-          <form action="/logout" method="POST">
+          <h4 class="mr-3 pt-1" style="color: white;"><%= user.email %></h4>
+          <form action="/logout" method="POST" class="pr-3">
             <button type="submit" class="btn btn-outline-warning">Logout</button>
           </form>
         <% } else { %>
